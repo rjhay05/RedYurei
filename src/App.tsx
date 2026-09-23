@@ -2,10 +2,12 @@ import React from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { FeaturedCollections } from './components/FeaturedCollections';
-import { Footer } from './components/Footer';
+import { LatestWorks } from './components/LatestWorks';
+import { Features } from './components/Features';
 import { CommissionSection } from './components/CommissionSection';
-import { SocialProof } from './components/SocialProof';
 import { AboutSection } from './components/AboutSection';
+import { FaqSection } from './components/FaqSection';
+import { Footer } from './components/Footer';
 export function App() {
   return (
     <div className="min-h-screen bg-fantasy-navy text-fantasy-white selection:bg-fantasy-teal selection:text-fantasy-navy relative overflow-hidden">
@@ -22,9 +24,11 @@ export function App() {
         <main>
           <HeroSection />
           <FeaturedCollections />
+          <LatestWorks />
+          <Features />
           <CommissionSection />
-          {/* <SocialProof /> */}
-          {/* <AboutSection /> */}
+          <AboutSection />
+          <FaqSection />
         </main>
         <Footer />
       </div>

@@ -1,19 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-const ARTWORK_URL = "/1000_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg";
+const ARTWORK_URL = "/images/redyurei.png";
 
 export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 px-6 bg-fantasy-navyLight relative overflow-hidden">
+      className="py-24 px-4 sm:px-6 bg-fantasy-navyLight relative overflow-hidden">
 
       {/* Atmospheric Blurs */}
       <div className="absolute top-1/2 left-1/4 w-[40vw] h-[40vw] bg-fantasy-purple/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2"></div>
       <div className="absolute top-1/2 right-1/4 w-[30vw] h-[30vw] bg-fantasy-teal/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
           {/* Image Column */}
           <motion.div
             initial={{
@@ -76,7 +76,7 @@ export function AboutSection() {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-gradient-white-teal mb-8 tracking-wider drop-shadow-lg">
-              [ENTER TEXT HERE]
+              Behind Red Yurei
             </h2>
 
             <div className="space-y-6 font-raleway text-fantasy-white/80 font-light leading-relaxed">

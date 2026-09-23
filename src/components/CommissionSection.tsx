@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-const ARTWORK_URL = "/1000_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg";
+import { getTagStyle } from '../lib/tagStyles';
 
 const commissions = [
 {
@@ -9,7 +9,7 @@ const commissions = [
   description:
   'Detailed bust or half-body portrait with atmospheric lighting and subtle background elements.',
   tag: 'Popular',
-  image: ARTWORK_URL
+  image: '/images/china_lady_nbg.png'
 },
 {
   title: 'Character Design',
@@ -17,7 +17,7 @@ const commissions = [
   description:
   'Full body concept art including turnaround, expression sheet, and detailed prop breakdowns.',
   tag: 'New',
-  image: ARTWORK_URL
+  image: '/images/yurei_fs_nbg.png'
 },
 {
   title: 'Full Scene Illustration',
@@ -25,14 +25,14 @@ const commissions = [
   description:
   'Epic cinematic composition featuring multiple characters, complex backgrounds, and dramatic lighting.',
   tag: 'Limited Slots',
-  image: ARTWORK_URL
+  image: '/images/nu_nbg.png'
 },
 {
   title: 'Concept Art',
   price: '$200 - $400',
   description:
   'World-building environment design, prop concepts, or creature designs for your fantasy project.',
-  image: ARTWORK_URL
+  image: '/images/piju_nbg.png'
 }];
 
 const containerVariants = {
@@ -64,7 +64,7 @@ export function CommissionSection() {
   return (
     <section
       id="commissions"
-      className="py-24 px-6 bg-fantasy-navyLight relative overflow-hidden">
+      className="py-24 px-4 sm:px-6 bg-fantasy-navyLight relative overflow-hidden">
 
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -123,17 +123,17 @@ export function CommissionSection() {
               {/* Inner border */}
               <div className="border border-fantasy-purple/20 p-5 h-full flex flex-col relative z-10 bg-fantasy-cardBg arcane-panel">
                 {item.tag &&
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-fantasy-teal text-fantasy-navy font-cinzel font-bold text-[10px] uppercase tracking-widest px-4 py-1 z-20 shadow-glow-teal whitespace-nowrap arcane-panel">
+              <div className={`absolute -top-3 left-1/2 -translate-x-1/2 font-cinzel font-bold text-[10px] uppercase tracking-widest px-4 py-1 z-20 whitespace-nowrap arcane-panel ${getTagStyle(item.tag)}`}>
                     {item.tag}
                   </div>
               }
 
-                <div className="w-full h-40 mb-6 overflow-hidden border border-fantasy-navy relative arcane-panel">
+                <div className="w-full h-40 mb-6 overflow-hidden border border-fantasy-navy relative arcane-panel bg-fantasy-navy">
                   <div className="absolute inset-0 bg-fantasy-navy/50 group-hover:bg-gradient-to-tr group-hover:from-fantasy-teal/20 group-hover:to-fantasy-purple/20 transition-all duration-500 z-10 mix-blend-overlay"></div>
                   <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover filter grayscale-[40%] contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" />
+                  className="w-full h-full object-contain object-bottom filter contrast-110 group-hover:scale-110 transition-all duration-500" />
 
                 </div>
 
