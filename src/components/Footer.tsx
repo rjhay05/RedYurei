@@ -81,11 +81,11 @@ export function Footer() {
               )}
             </div>
             <a
-              href="mailto:maja84fox@gmail.com"
+              href="mailto:redyuurei@gmail.com"
               className="flex items-center gap-3 font-raleway text-fantasy-white/70 hover:text-fantasy-teal transition-colors group">
 
               <MailIcon size={16} className="group-hover:text-fantasy-teal transition-colors" />
-              <span className="text-sm">maja84fox@gmail.com</span>
+              <span className="text-sm">redyuurei@gmail.com</span>
             </a>
           </div>
 
