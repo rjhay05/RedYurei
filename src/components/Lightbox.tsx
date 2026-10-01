@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon } from 'lucide-react';
 import { getTagStyle } from '../lib/tagStyles';

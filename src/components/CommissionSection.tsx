@@ -1,6 +1,7 @@
-import React from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getTagStyle } from '../lib/tagStyles';
+import { Lightbox, LightboxItem } from './Lightbox';
 
 const commissions = [
   {
@@ -8,7 +9,7 @@ const commissions = [
   price: '€25',
   description: 'Detailed portrait of a character, ideal for profile pictures and avatars.',
   tag: 'Artist',
-  image: '/images/headshot.jpg'
+  image: '/images/prices/headshot.jpg'
 },
 {
   title: 'Half Body Design',
@@ -16,7 +17,7 @@ const commissions = [
   description:
   'Illustration of a character cropped at the hips, excellent for displaying outfits.',
   tag: 'Hot',
-  image: '/images/half_body.jpg'
+  image: '/images/prices/half_body.jpg'
 },
 {
   title: 'Full Body Commission',
@@ -24,7 +25,7 @@ const commissions = [
   description:
   'A full-body illustration of your character, shown from head to toe. Perfect for character references, personal artwork, or showcasing your character’s full design and outfit.',
   tag: 'Popular',
-  image: '/images/full_body.jpg'
+  image: '/images/prices/full_body.jpg'
 },
 {
   title: 'Lineart',
@@ -32,7 +33,7 @@ const commissions = [
   description:
   'Clean lineart of a character in a transparent PNG format. Perfect for coloring pages or engraving, decals, stamps, and other creative projects.',
   tag: 'New',
-  image: '/images/lineart.jpg'
+  image: '/images/prices/lineart.jpg'
 }]
 
 const containerVariants = {
@@ -61,6 +62,7 @@ const itemVariants = {
   }
 };
 export function CommissionSection() {
+    const [active, setActive] = useState<LightboxItem | null>(null);
   return (
     <section
       id="commissions"
@@ -127,7 +129,12 @@ export function CommissionSection() {
                     {item.tag}
                   </div>
               }
-
+              <motion.button
+               key={index}
+               type="button"
+               onClick={() => setActive(item)}
+               aria-label={`View ${item.title}`}
+               >
                 <div className="w-full h-90 mb-6 overflow-hidden border border-fantasy-navy relative arcane-panel bg-fantasy-navy">
                   <div className="absolute inset-0 bg-fantasy-navy/50 group-hover:bg-gradient-to-tr group-hover:from-fantasy-teal/20 group-hover:to-fantasy-purple/20 transition-all duration-500 z-10 mix-blend-overlay"></div>
                   <img
@@ -136,6 +143,7 @@ export function CommissionSection() {
                   className="w-full h-full object-contain object-bottom filter contrast-110 group-hover:scale-110 transition-all duration-500" />
 
                 </div>
+                </motion.button>
 
                 <h3 className="text-xl font-cinzel font-bold text-fantasy-white mb-2 text-center group-hover:text-fantasy-teal transition-colors">
                   {item.title}
@@ -157,6 +165,7 @@ export function CommissionSection() {
           )}
         </motion.div>
       </div>
+       <Lightbox item={active} onClose={() => setActive(null)} />
     </section>);
 
 }

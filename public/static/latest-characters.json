@@ -1,0 +1,57 @@
+[
+    {
+        "title": "Mooncake",
+        "tag": "Featured",
+        "image": "/images/THUMBNAILS/thumbnail_mooncake.png",
+        "fullImage": "/images/FULL IMAGES/jhaypee_nbg.png"
+    },
+    {
+        "title": "Yvonka",
+        "tag": "Popular",
+        "image": "/images/THUMBNAILS/thumbnail_yvonka.png",
+        "fullImage": "/images/FULL IMAGES/yvonka.png"
+    },
+    {
+        "title": "Maizen",
+        "tag": "New",
+        "image": "/images/THUMBNAILS/thumbnail_maizen.png",
+        "fullImage": "/images/FULL IMAGES/maizennnobg.png"
+    },
+    {
+        "title": "Gasolina",
+        "tag": "New",
+        "image": "/images/THUMBNAILS/thumbnail_gasolina.png",
+        "fullImage": "/images/FULL IMAGES/gasolina1.png"
+    },
+    {
+        "title": "Yun",
+        "tag": "NSFW",
+        "image": "/images/FULL IMAGES/nsfw1.png"
+    },
+    {
+        "title": "Yun x Nu",
+        "tag": "NSFW",
+        "image": "/images/THUMBNAILS/thumbnail_yunxu.png",
+        "fullImage": "/images/FULL IMAGES/yunxu_nbg.png"
+    },
+    {
+        "title": "Piju",
+        "tag": "NSFW",
+        "image": "/images/FULL IMAGES/PIJU_NO_BG.png"
+    },
+    {
+        "title": "China Lady",
+        "tag": "Commissioned",
+        "image": "/images/FULL IMAGES/china_lady.png"
+    },
+    {
+        "title": "Nu",
+        "tag": "Commissioned",
+        "image": "/images/FULL IMAGES/NU_NO_BG.png"
+    },
+    {
+        "title": "Nu",
+        "tag": "NSFW",
+        "image": "/images/THUMBNAILS/thumbnail_peach.png"
+    }
+]

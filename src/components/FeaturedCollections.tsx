@@ -1,35 +1,12 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
 import { Lightbox, LightboxItem } from './Lightbox';
 import { getTagStyle } from '../lib/tagStyles';
 
-const featured = [
-  {
-    title: 'Yurei',
-    category: 'Character Design',
-    tag: 'Featured',
-    image: '/images/yurei_fs_nbg.png'
-  },
-  {
-    title: 'China Lady',
-    category: 'Concept Art',
-    tag: 'Popular',
-    image: '/images/china_lady_nbg.png'
-  },
-  {
-    title: 'Nu',
-    category: 'Character Design',
-    tag: 'Limited Slot',
-    image: '/images/nu_nbg.png'
-  },
-  {
-    title: 'Peach',
-    category: 'Illustration',
-    tag: 'New',
-    image: '/images/peach.png'
-  }
-];
+type CharacterItem = LightboxItem & {
+  fullImage?: string;
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -44,7 +21,22 @@ const itemVariants = {
 };
 
 export function FeaturedCollections() {
+  const [featured, setFeatured] = useState<CharacterItem[]>([]);
   const [active, setActive] = useState<LightboxItem | null>(null);
+
+  useEffect(() => {
+    fetch('/static/featured-characters.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to load featured characters');
+        }
+        return response.json();
+      })
+      .then((data: CharacterItem[]) => setFeatured(data))
+      .catch((error) => {
+        console.error('Error loading featured characters:', error);
+      });
+  }, []);
 
   return (
     <section id="featured" className="pt-24 pb-16 px-4 sm:px-6 bg-fantasy-navy relative overflow-hidden">
@@ -93,7 +85,7 @@ export function FeaturedCollections() {
             key={index}
             type="button"
             variants={itemVariants}
-            onClick={() => setActive(work)}
+            onClick={() => setActive({ ...work, image: work.fullImage ?? work.image })}
             aria-label={`View ${work.title}`}
             className="group relative arcane-panel bg-fantasy-cardBg p-1 border border-fantasy-teal/20 hover:border-fantasy-teal transition-all duration-300 hover:shadow-glow-teal cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-fantasy-teal">
 

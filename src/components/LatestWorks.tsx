@@ -1,21 +1,16 @@
-import React, { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Lightbox, LightboxItem } from './Lightbox';
 
-const latest = [
-  { title: 'Yurei', image: '/images/yurei_fs_nbg.png' },
-  { title: 'China Lady', image: '/images/china_lady_nbg.png' },
-  { title: 'Nu', image: '/images/nu_nbg.png' },
-  { title: 'Peach', image: '/images/peach.png' },
-  { title: 'Piju', image: '/images/piju_nbg.png' },
-  { title: 'Tali', image: '/images/tali.png' },
-  { title: 'Peach x Yunxu', image: '/images/peachxyunxu.png' }
-];
+type CharacterItem = LightboxItem & {
+  fullImage?: string;
+};
 
 export function LatestWorks() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<LightboxItem | null>(null);
+  const [latest, setLatest] = useState<CharacterItem[]>([]);
 
   const scrollBy = (dir: number) => {
     const track = trackRef.current;
@@ -23,6 +18,21 @@ export function LatestWorks() {
     const amount = track.clientWidth * 0.8 * dir;
     track.scrollBy({ left: amount, behavior: 'smooth' });
   };
+
+   useEffect(() => {
+      fetch('/static/latest-characters.json')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to load latest characters');
+          }
+          return response.json();
+        })
+        .then((data: CharacterItem[]) => setLatest(data))
+        .catch((error) => {
+          console.error('Error loading latest characters:', error);
+        });
+    }, []);
+  
 
   return (
     <section id="latest" className="py-16 px-4 sm:px-6 bg-fantasy-navyLight relative overflow-hidden">
@@ -79,7 +89,7 @@ export function LatestWorks() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (index % 4) * 0.08 }}
-              onClick={() => setActive(work)}
+                onClick={() => setActive({ ...work, image: work.fullImage ?? work.image })}
               aria-label={`View ${work.title}`}
               className="group relative shrink-0 snap-center w-[46%] sm:w-[30%] md:w-[22%] lg:w-[15.5%] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-fantasy-teal">
 
@@ -90,7 +100,7 @@ export function LatestWorks() {
                   <img
                     src={work.image}
                     alt={work.title}
-                    className="w-full h-full object-contain object-bottom filter grayscale-[15%] contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+                    className="absolute inset-0 w-full h-full object-cover object-center filter grayscale-[15%] contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-2 z-20">
                     <h4 className="font-cinzel font-bold text-fantasy-white text-xs md:text-sm text-center drop-shadow-lg group-hover:text-fantasy-teal transition-colors truncate">
                       {work.title}
