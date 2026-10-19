@@ -2,8 +2,8 @@
     {
         "title": "Mooncake",
         "tag": "Featured",
-        "image": "/images/THUMBNAILS/thumbnail_mooncake.png",
-        "fullImage": "/images/FULL IMAGES/jhaypee_nbg.png"
+        "image": "/images/THUMBNAILS/mooncake1_thumbnail.png",
+        "fullImage": "/images/IMAGES WITH BG/mooncake1_full.png"
     },
     {
         "title": "Yvonka",
@@ -22,6 +22,11 @@
         "tag": "New",
         "image": "/images/THUMBNAILS/thumbnail_gasolina.png",
         "fullImage": "/images/FULL IMAGES/gasolina1.png"
+    },
+      {
+        "title": "Caomei",
+        "tag": "Sweet",
+        "image": "/images/FULL IMAGES/caomei_nbg.png"
     },
     {
         "title": "Yunxu",
