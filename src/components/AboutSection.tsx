@@ -1,19 +1,18 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-const ARTWORK_URL = "/1000_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg";
+const ARTWORK_URL = "/images/FULL IMAGES/YUREI_2_NO_BG.png";
 
 export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 px-6 bg-fantasy-navyLight relative overflow-hidden">
+      className="py-24 px-4 sm:px-6 bg-fantasy-navyLight relative overflow-hidden">
 
       {/* Atmospheric Blurs */}
       <div className="absolute top-1/2 left-1/4 w-[40vw] h-[40vw] bg-fantasy-purple/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2"></div>
       <div className="absolute top-1/2 right-1/4 w-[30vw] h-[30vw] bg-fantasy-teal/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
           {/* Image Column */}
           <motion.div
             initial={{
@@ -32,20 +31,25 @@ export function AboutSection() {
             }}
             className="relative flex justify-center lg:justify-end">
 
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center">
-              {/* Hexagonal decorative rings */}
-              <div className="absolute inset-0 border-2 border-fantasy-teal/30 hex-clip animate-pulse-glow shadow-glow-teal"></div>
-              <div className="absolute inset-4 border border-fantasy-purple/50 hex-clip rotate-180"></div>
+            <div className="relative w-[18rem] h-[24rem] sm:w-[26rem] sm:h-[34rem] xl:w-[30rem] xl:h-[38rem]">
+              {/* Arch frame glow (matches hero portrait) */}
+              <div className="absolute inset-0 rounded-t-full border-2 border-fantasy-teal/40 shadow-glow-teal animate-pulse-glow"></div>
+              <div className="absolute inset-3 rounded-t-full border border-fantasy-purple/40"></div>
+              <div className="absolute -inset-6 rounded-t-full border border-fantasy-gold/10 animate-spin-slow"></div>
 
               {/* Portrait */}
-              <div className="absolute inset-8 hex-clip overflow-hidden border-2 border-fantasy-teal/80 shadow-[inset_0_0_20px_rgba(10,200,185,0.5)] bg-fantasy-navy">
+              <div className="absolute inset-3 rounded-t-full overflow-hidden bg-fantasy-cardBg">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(123,45,142,0.25),transparent_65%)] z-10 mix-blend-screen"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-fantasy-navy via-transparent to-transparent z-10"></div>
                 <img
                   src={ARTWORK_URL}
                   alt="Aetheria - Artist Portrait"
-                  className="w-full h-full object-cover filter contrast-125 saturate-150 brightness-90" />
-
-                <div className="absolute inset-0 bg-gradient-to-tr from-fantasy-purple/20 to-fantasy-teal/20 mix-blend-overlay"></div>
+                  className="w-full h-full object-cover object-top filter contrast-110 saturate-125" />
+                <div className="vignette-overlay z-20"></div>
               </div>
+
+              <div className="absolute -top-2 -right-2 text-fantasy-pink text-2xl animate-float">✿</div>
+              <div className="absolute bottom-10 -left-4 text-fantasy-pink/80 text-xl animate-float-delayed">✿</div>
             </div>
           </motion.div>
 
@@ -76,27 +80,20 @@ export function AboutSection() {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-gradient-white-teal mb-8 tracking-wider drop-shadow-lg">
-              [ENTER TEXT HERE]
+              Behind Red Yurei
             </h2>
 
             <div className="space-y-6 font-raleway text-fantasy-white/80 font-light leading-relaxed">
               <p>
-                Forged in the fires of digital creation, my work seeks to bridge
-                the gap between myth and reality. I am a multi-media artist
-                specializing in cinematic fantasy illustration, concept design,
-                and visual storytelling.
+                I'm an independent artist and character designer who loves bringing all kinds of characters and creative ideas to life.
               </p>
+
               <p>
-                Drawing inspiration from epic sagas, arcane lore, and the
-                dramatic lighting of modern animation, I craft pieces that feel
-                like a frozen moment from a grander narrative. Every brushstroke
-                is placed with the intention of evoking emotion, wonder, and a
-                sense of scale.
+                 From cute and colorful to dark and detailed, I enjoy exploring different styles and experimenting with new ideas. Whether you have an original character, a specific vision, or just a little idea you have in mind, I'm happy to work with you to make it happen! 
               </p>
+
               <p>
-                Whether designing a solitary hero or painting a sprawling
-                battlefield, my goal is to create artwork that doesn't just look
-                beautiful, but feels alive and collectible.
+                Thank you for stopping by and taking a look at my work. I hope we can create something wonderful together ♡◇♡
               </p>
             </div>
 

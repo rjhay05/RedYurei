@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Mooncake",
+    "category": "Character Design",
+    "tag": "Featured",
+    "image": "/images/THUMBNAILS/thumbnail_mooncake.png",
+    "fullImage": "/images/FULL IMAGES/jhaypee_nbg.png"
+  },
+  {
+    "title": "Yvonka",
+    "category": "Concept Art",
+    "tag": "Popular",
+    "image": "/images/THUMBNAILS/thumbnail_yvonka.png",
+    "fullImage": "/images/FULL IMAGES/yvonka.png"
+  },
+  {
+    "title": "Maizen",
+    "category": "Character Design",
+    "tag": "Limited Slot",
+    "image": "/images/THUMBNAILS/thumbnail_maizen.png",
+    "fullImage": "/images/FULL IMAGES/maizennobg.png"
+  },
+  {
+    "title": "Gasolina",
+    "category": "Illustration",
+    "tag": "New",
+    "image": "/images/THUMBNAILS/thumbnail_gasolina.png",
+    "fullImage": "/images/FULL IMAGES/gasolina1.png"
+  }
+]
