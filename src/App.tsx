@@ -27,7 +27,7 @@ export function App() {
           <LatestWorks />
           <Features />
           <CommissionSection />
-          <AboutSection />
+          {/* <AboutSection /> */}
           <FaqSection />
         </main>
         <Footer />

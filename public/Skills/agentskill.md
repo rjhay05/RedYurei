@@ -13,3 +13,6 @@ I have mistakenly typed CommissionSection, it should be FeaturedCollection that 
 
 # Instruction
 Revert it back and the changes should be applied in FeaturedCollections
+
+# Add contact form
+Add contat form before the the footer. When the message icon is clicked in the navbar, it should anchor dowm to the contact page. Make the contact form functional, it should send an email when sent. design and style should match with the existing design

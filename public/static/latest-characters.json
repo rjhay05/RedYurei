@@ -24,12 +24,12 @@
         "fullImage": "/images/FULL IMAGES/gasolina1.png"
     },
     {
-        "title": "Yun",
+        "title": "Yunxu x Peach x Piju",
         "tag": "NSFW",
         "image": "/images/FULL IMAGES/nsfw1.png"
     },
     {
-        "title": "Yun x Nu",
+        "title": "Yunxnu",
         "tag": "NSFW",
         "image": "/images/THUMBNAILS/thumbnail_yunxu.png",
         "fullImage": "/images/FULL IMAGES/yunxu_nbg.png"
@@ -50,8 +50,8 @@
         "image": "/images/FULL IMAGES/NU_NO_BG.png"
     },
     {
-        "title": "Nu",
-        "tag": "NSFW",
+        "title": "Peach",
+        "tag": "Commissioned",
         "image": "/images/THUMBNAILS/thumbnail_peach.png"
     }
 ]

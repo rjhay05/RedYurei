@@ -1,4 +1,3 @@
-import React from 'react';
 import { InstagramIcon, TwitterIcon, MessageCircleIcon, MailIcon } from 'lucide-react';
 export function Footer() {
   const quickLinks = [

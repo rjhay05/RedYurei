@@ -21,7 +21,7 @@ const faqs = [
   {
     question: 'What file formats will I receive?',
     answer:
-      'You will receive high-resolution PNG and JPG files. Layered source files can be provided on request for eligible commission tiers.'
+      'You will receive high-resolution PNG. Layered source files can be provided on request for eligible commission tiers.'
   }
 ];
 

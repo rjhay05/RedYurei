@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-const ARTWORK_URL = "/images/redyurei.png";
+const ARTWORK_URL = "/images/FULL IMAGES/YUREI_1_NO_BG.png";
 
 export function AboutSection() {
   return (
