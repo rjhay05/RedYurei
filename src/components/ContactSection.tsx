@@ -5,10 +5,10 @@ import { SendIcon, MailIcon, CheckCircle2Icon } from 'lucide-react';
 const CONTACT_EMAIL = 'redyuurei@gmail.com';
 
 const commissionTypes = [
-  'Portrait / Character Art',
-  'Full Illustration',
-  'Scene / Environment',
-  'Commercial License',
+  'Headshot',
+  'Half body',
+  'Full body',
+  'Lineart',
   'General Inquiry'
 ];
 

@@ -155,7 +155,7 @@ export function Lightbox({ items, index, onIndexChange, onClose }: LightboxProps
                 <img
                 src={item.image}
                 alt={item.title || 'Artwork'}
-                className="max-h-[78vh] w-auto max-w-full object-contain filter contrast-110 saturate-125 select-none"
+                className="max-h-[78vh] w-auto max-w-full object-contain filter select-none"
                 draggable={false} />
 
                 <span className="absolute top-3 right-3 font-longshot text-fantasy-white/25 text-sm tracking-wider z-20">

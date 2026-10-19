@@ -24,19 +24,14 @@
         "fullImage": "/images/FULL IMAGES/gasolina1.png"
     },
     {
-        "title": "Yunxu x Peach x Piju",
-        "tag": "NSFW",
-        "image": "/images/FULL IMAGES/nsfw1.png"
-    },
-    {
-        "title": "Yunxnu",
-        "tag": "NSFW",
+        "title": "Yunxu",
+        "tag": "Hot",
         "image": "/images/THUMBNAILS/thumbnail_yunxu.png",
         "fullImage": "/images/FULL IMAGES/yunxu_nbg.png"
     },
     {
         "title": "Piju",
-        "tag": "NSFW",
+        "tag": "Commissioned",
         "image": "/images/FULL IMAGES/PIJU_NO_BG.png"
     },
     {

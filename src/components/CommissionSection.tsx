@@ -136,11 +136,10 @@ export function CommissionSection() {
                aria-label={`View ${item.title}`}
                >
                 <div className="w-full h-90 mb-6 overflow-hidden border border-fantasy-navy relative arcane-panel bg-fantasy-navy">
-                  <div className="absolute inset-0 bg-fantasy-navy/50 group-hover:bg-gradient-to-tr group-hover:from-fantasy-teal/20 group-hover:to-fantasy-purple/20 transition-all duration-500 z-10 mix-blend-overlay"></div>
                   <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-contain object-bottom filter contrast-110 group-hover:scale-110 transition-all duration-500" />
+                  className="w-full h-full object-contain object-bottom group-hover:scale-110 transition-all duration-500" />
 
                 </div>
                 </motion.button>

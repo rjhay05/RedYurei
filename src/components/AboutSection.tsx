@@ -43,8 +43,8 @@ export function AboutSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-fantasy-navy via-transparent to-transparent z-10"></div>
                 <img
                   src={ARTWORK_URL}
-                  alt="Aetheria - Artist Portrait"
-                  className="w-full h-full object-cover object-top filter contrast-110 saturate-125" />
+                  alt="RedYuurei - Artist Portrait"
+                  className="w-full h-full object-cover object-top translate-y-4 filter contrast-110 saturate-125" />
                 <div className="vignette-overlay z-20"></div>
               </div>
 
