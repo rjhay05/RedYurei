@@ -7,6 +7,7 @@ import { Features } from './components/Features';
 import { CommissionSection } from './components/CommissionSection';
 import { AboutSection } from './components/AboutSection';
 import { FaqSection } from './components/FaqSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 export function App() {
   return (
@@ -27,8 +28,9 @@ export function App() {
           <LatestWorks />
           <Features />
           <CommissionSection />
-          {/* <AboutSection /> */}
+          <AboutSection />
           <FaqSection />
+          <ContactSection />
         </main>
         <Footer />
       </div>

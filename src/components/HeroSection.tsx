@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-const ARTWORK_URL = "/images/FULL IMAGES/YUREI_2_NO_BG.png";
+const ARTWORK_URL = "/images/FULL IMAGES/YUREI_1_NO_BG.png";
 
 export function HeroSection() {
   // Generate random sparks

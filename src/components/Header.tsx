@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MenuIcon, XIcon, TwitterIcon, MailIcon, MessageCircleIcon } from 'lucide-react';
+import { MenuIcon, XIcon, InstagramIcon, MailIcon, FacebookIcon, Anchor } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,10 +34,9 @@ export function Header() {
   }];
 
   const socials = [
-  { icon: MessageCircleIcon, label: 'Discord', href: '#' },
-  { icon: TwitterIcon, label: 'Twitter', href: '#' },
-  { icon: MailIcon, label: 'Email', href: 'mailto:maja84fox@gmail.com' }];
-
+  { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61594847382347' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/redyuurei/' },
+  { icon: MailIcon, label: 'Email', anchor: true, href: '#contact' }];
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-fantasy-navy/95 backdrop-blur-md shadow-lg' : 'bg-transparent py-4'}`}>
@@ -91,6 +90,7 @@ export function Header() {
             <a
               key={s.label}
               href={s.href}
+              target={!s.anchor ? "_blank" : undefined}
               aria-label={s.label}
               className="text-fantasy-white/60 hover:text-fantasy-teal transition-colors duration-300">
                 <s.icon size={18} />
@@ -98,7 +98,7 @@ export function Header() {
             )}
           </div>
           <a
-            href="#commissions"
+            href="#contact"
             className="px-5 py-2.5 bg-fantasy-crimson text-fantasy-white font-cinzel font-bold tracking-widest uppercase text-[11px] hover:bg-red-600 transition-all duration-300 shadow-glow-crimson hover:shadow-glow-crimson-strong arcane-panel border-b-2 border-fantasy-teal flex items-center gap-2">
             Order Commission
             <span className="w-1.5 h-1.5 rotate-45 bg-fantasy-teal inline-block"></span>
@@ -145,7 +145,7 @@ export function Header() {
               </a>
           )}
             <a
-              href="#commissions"
+              href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="mt-2 px-6 py-3 bg-fantasy-crimson text-fantasy-white font-cinzel font-bold tracking-widest uppercase text-sm text-center arcane-panel border-b-2 border-fantasy-teal relative z-10">
               Order Commission
@@ -155,6 +155,7 @@ export function Header() {
               <a
                 key={s.label}
                 href={s.href}
+                onClick={() => setIsMobileMenuOpen(false)}
                 aria-label={s.label}
                 className="text-fantasy-teal hover:text-fantasy-white transition-colors">
                   <s.icon size={20} />

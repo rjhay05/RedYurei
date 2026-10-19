@@ -22,7 +22,8 @@ const itemVariants = {
 
 export function FeaturedCollections() {
   const [featured, setFeatured] = useState<CharacterItem[]>([]);
-  const [active, setActive] = useState<LightboxItem | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const lightboxItems: LightboxItem[] = featured.map((work) => ({ ...work, image: work.fullImage ?? work.image }));
 
   useEffect(() => {
     fetch('/static/featured-characters.json')
@@ -85,7 +86,7 @@ export function FeaturedCollections() {
             key={index}
             type="button"
             variants={itemVariants}
-            onClick={() => setActive({ ...work, image: work.fullImage ?? work.image })}
+            onClick={() => setActiveIndex(index)}
             aria-label={`View ${work.title}`}
             className="group relative arcane-panel bg-fantasy-cardBg p-1 border border-fantasy-teal/20 hover:border-fantasy-teal transition-all duration-300 hover:shadow-glow-teal cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-fantasy-teal">
 
@@ -129,7 +130,11 @@ export function FeaturedCollections() {
         </motion.div>
       </div>
 
-      <Lightbox item={active} onClose={() => setActive(null)} />
+      <Lightbox
+        items={lightboxItems}
+        index={activeIndex}
+        onIndexChange={setActiveIndex}
+        onClose={() => setActiveIndex(null)} />
     </section>
   );
 }

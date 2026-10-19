@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getTagStyle } from '../lib/tagStyles';
-import { Lightbox, LightboxItem } from './Lightbox';
+import { Lightbox } from './Lightbox';
 
 const commissions = [
   {
@@ -62,7 +62,7 @@ const itemVariants = {
   }
 };
 export function CommissionSection() {
-    const [active, setActive] = useState<LightboxItem | null>(null);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
     <section
       id="commissions"
@@ -132,7 +132,7 @@ export function CommissionSection() {
               <motion.button
                key={index}
                type="button"
-               onClick={() => setActive(item)}
+               onClick={() => setActiveIndex(index)}
                aria-label={`View ${item.title}`}
                >
                 <div className="w-full h-90 mb-6 overflow-hidden border border-fantasy-navy relative arcane-panel bg-fantasy-navy">
@@ -157,15 +157,21 @@ export function CommissionSection() {
                   {item.description}
                 </p>
 
-                <button className="w-full py-3 bg-fantasy-navy border border-fantasy-crimson text-fantasy-crimson font-cinzel font-bold tracking-widest uppercase text-sm group-hover:bg-fantasy-crimson group-hover:text-fantasy-white transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,45,74,0.5),0_0_10px_rgba(10,200,185,0.5)] mt-auto arcane-panel">
+                <a
+                  href="#contact"
+                  className="block text-center w-full py-3 bg-fantasy-navy border border-fantasy-crimson text-fantasy-crimson font-cinzel font-bold tracking-widest uppercase text-sm group-hover:bg-fantasy-crimson group-hover:text-fantasy-white transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,45,74,0.5),0_0_10px_rgba(10,200,185,0.5)] mt-auto arcane-panel">
                   Commission
-                </button>
+                </a>
               </div>
             </motion.div>
           )}
         </motion.div>
       </div>
-       <Lightbox item={active} onClose={() => setActive(null)} />
+       <Lightbox
+        items={commissions}
+        index={activeIndex}
+        onIndexChange={setActiveIndex}
+        onClose={() => setActiveIndex(null)} />
     </section>);
 
 }

@@ -1,4 +1,4 @@
-import { InstagramIcon, TwitterIcon, MessageCircleIcon, MailIcon } from 'lucide-react';
+import { InstagramIcon, TwitterIcon, MessageCircleIcon, MailIcon, FacebookIcon } from 'lucide-react';
 export function Footer() {
   const quickLinks = [
   { name: 'About', href: '#about' },
@@ -7,14 +7,13 @@ export function Footer() {
   { name: 'FAQ', href: '#faq' }];
 
   const socials = [
-  { icon: TwitterIcon, label: 'Twitter', href: '#' },
-  { icon: MessageCircleIcon, label: 'Discord', href: '#' },
-  { icon: InstagramIcon, label: 'Instagram', href: '#' },
-  { icon: MailIcon, label: 'Email', href: 'mailto:maja84fox@gmail.com' }];
+
+{ icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61594847382347' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/redyuurei/' },
+  { icon: MailIcon, label: 'Email', anchor: true, href: '#contact' }];
 
   return (
     <footer
-      id="contact"
       className="bg-fantasy-navy pt-20 pb-10 px-4 sm:px-6 relative overflow-hidden">
 
       {/* Top Border Gradient */}
@@ -36,8 +35,7 @@ export function Footer() {
               </h2>
             </div>
             <p className="font-raleway text-fantasy-white/60 text-sm text-center md:text-left max-w-xs leading-relaxed">
-              Digital art &amp; illustration. Bringing your ideas to life through
-              cinematic fantasy visuals.
+              Digital art &amp; illustration. Make your visions come to life.
             </p>
           </div>
 
@@ -98,7 +96,7 @@ export function Footer() {
               Let's create something amazing together.
             </p>
             <a
-              href="#commissions"
+              href="#contact"
               className="px-6 py-3 bg-fantasy-crimson text-fantasy-white font-cinzel font-bold tracking-widest uppercase text-xs hover:bg-red-600 transition-all duration-300 shadow-glow-crimson hover:shadow-glow-crimson-strong arcane-panel border-b-2 border-fantasy-teal flex items-center gap-2">
               Order Commission
               <span className="w-1.5 h-1.5 rotate-45 bg-fantasy-teal inline-block"></span>

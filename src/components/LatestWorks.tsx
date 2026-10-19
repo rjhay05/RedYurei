@@ -9,8 +9,9 @@ type CharacterItem = LightboxItem & {
 
 export function LatestWorks() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState<LightboxItem | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [latest, setLatest] = useState<CharacterItem[]>([]);
+  const lightboxItems: LightboxItem[] = latest.map((work) => ({ ...work, image: work.fullImage ?? work.image }));
 
   const scrollBy = (dir: number) => {
     const track = trackRef.current;
@@ -89,7 +90,7 @@ export function LatestWorks() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (index % 4) * 0.08 }}
-                onClick={() => setActive({ ...work, image: work.fullImage ?? work.image })}
+                onClick={() => setActiveIndex(index)}
               aria-label={`View ${work.title}`}
               className="group relative shrink-0 snap-center w-[46%] sm:w-[30%] md:w-[22%] lg:w-[15.5%] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-fantasy-teal">
 
@@ -129,7 +130,11 @@ export function LatestWorks() {
         </div>
       </div>
 
-      <Lightbox item={active} onClose={() => setActive(null)} />
+      <Lightbox
+        items={lightboxItems}
+        index={activeIndex}
+        onIndexChange={setActiveIndex}
+        onClose={() => setActiveIndex(null)} />
     </section>
   );
 }

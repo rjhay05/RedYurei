@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { XIcon } from 'lucide-react';
+import { XIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { getTagStyle } from '../lib/tagStyles';
 
 export interface LightboxItem {
@@ -11,15 +11,44 @@ export interface LightboxItem {
 }
 
 interface LightboxProps {
-  item: LightboxItem | null;
+  items: LightboxItem[];
+  index: number | null;
+  onIndexChange: (index: number) => void;
   onClose: () => void;
 }
 
-export function Lightbox({ item, onClose }: LightboxProps) {
+const SWIPE_THRESHOLD = 80;
+
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir * 80, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir * -80, opacity: 0 })
+};
+
+const arrowClass =
+  'absolute top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center arcane-panel border border-fantasy-teal/40 bg-fantasy-navy/70 text-fantasy-teal hover:bg-fantasy-teal hover:text-fantasy-navy hover:shadow-glow-teal transition-all duration-300';
+
+export function Lightbox({ items, index, onIndexChange, onClose }: LightboxProps) {
+  const [direction, setDirection] = useState(1);
+  const item = index !== null ? items[index] : undefined;
+  const count = items.length;
+  const isOpen = !!item;
+
+  const go = useCallback(
+    (dir: number) => {
+      if (index === null || count < 2) return;
+      setDirection(dir);
+      onIndexChange((index + dir + count) % count);
+    },
+    [index, count, onIndexChange]
+  );
+
   useEffect(() => {
-    if (!item) return;
+    if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      else if (e.key === 'ArrowLeft') go(-1);
+      else if (e.key === 'ArrowRight') go(1);
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKey);
@@ -27,7 +56,16 @@ export function Lightbox({ item, onClose }: LightboxProps) {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKey);
     };
-  }, [item, onClose]);
+  }, [isOpen, onClose, go]);
+
+  // Preload neighbours so browsing feels instant
+  useEffect(() => {
+    if (index === null || count < 2) return;
+    [(index + 1) % count, (index - 1 + count) % count].forEach((i) => {
+      const img = new Image();
+      img.src = items[i].image;
+    });
+  }, [index, count, items]);
 
   return (
     <AnimatePresence>
@@ -55,6 +93,29 @@ export function Lightbox({ item, onClose }: LightboxProps) {
             <XIcon size={22} />
           </button>
 
+          {count > 1 &&
+          <>
+              <button
+              onClick={(e) => {
+                e.stopPropagation();
+                go(-1);
+              }}
+              aria-label="Previous artwork"
+              className={`${arrowClass} left-2 sm:left-6`}>
+                <ChevronLeftIcon size={22} />
+              </button>
+              <button
+              onClick={(e) => {
+                e.stopPropagation();
+                go(1);
+              }}
+              aria-label="Next artwork"
+              className={`${arrowClass} right-2 sm:right-6`}>
+                <ChevronRightIcon size={22} />
+              </button>
+            </>
+          }
+
           {/* Framed artwork */}
           <motion.div
           className="relative z-10 max-w-4xl w-full max-h-full flex flex-col items-center"
@@ -63,6 +124,26 @@ export function Lightbox({ item, onClose }: LightboxProps) {
           exit={{ scale: 0.9, opacity: 0, y: 24 }}
           transition={{ type: 'spring', damping: 26, stiffness: 260 }}
           onClick={(e) => e.stopPropagation()}>
+
+            <motion.div
+            className="w-full flex flex-col items-center"
+            drag={count > 1 ? 'x' : false}
+            dragSnapToOrigin
+            dragElastic={0.4}
+            onDragEnd={(_, info) => {
+              if (info.offset.x > SWIPE_THRESHOLD) go(-1);
+              else if (info.offset.x < -SWIPE_THRESHOLD) go(1);
+            }}>
+            <AnimatePresence mode="wait" initial={false} custom={direction}>
+            <motion.div
+            key={index}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="w-full flex flex-col items-center">
 
             <div className="relative arcane-panel p-1 bg-fantasy-cardBg border border-fantasy-teal/40 shadow-glow-teal max-h-[80vh] w-full">
               {/* Hextech corners */}
@@ -74,7 +155,8 @@ export function Lightbox({ item, onClose }: LightboxProps) {
                 <img
                 src={item.image}
                 alt={item.title || 'Artwork'}
-                className="max-h-[78vh] w-auto max-w-full object-contain filter contrast-110 saturate-125" />
+                className="max-h-[78vh] w-auto max-w-full object-contain filter contrast-110 saturate-125 select-none"
+                draggable={false} />
 
                 <span className="absolute top-3 right-3 font-longshot text-fantasy-white/25 text-sm tracking-wider z-20">
                   RED YUREI
@@ -100,6 +182,17 @@ export function Lightbox({ item, onClose }: LightboxProps) {
                     {item.category}
                   </p>
             }
+              </div>
+          }
+            </motion.div>
+            </AnimatePresence>
+            </motion.div>
+
+            {count > 1 &&
+          <div className="mt-4 flex items-center gap-3 font-cinzel text-fantasy-white/60 text-xs tracking-widest">
+                <span className="w-1.5 h-1.5 rotate-45 bg-fantasy-teal"></span>
+                {(index ?? 0) + 1} / {count}
+                <span className="w-1.5 h-1.5 rotate-45 bg-fantasy-purple"></span>
               </div>
           }
           </motion.div>
